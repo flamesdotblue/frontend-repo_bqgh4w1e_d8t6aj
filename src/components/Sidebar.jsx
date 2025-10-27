@@ -1,12 +1,9 @@
-import { Home, Layers, Building2, BookOpen, LifeBuoy, Scale, Instagram, Mail, Twitter, Linkedin } from 'lucide-react';
+import { Home, Layers, LogIn } from 'lucide-react';
 
 const navItems = [
   { href: '#home', label: 'Home', icon: Home },
   { href: '#use-cases', label: 'Use Cases', icon: Layers },
-  { href: '#enterprise-faq', label: 'Enterprise', icon: Building2 },
-  { href: '#resources', label: 'Resources', icon: BookOpen },
-  { href: '#support', label: 'Support', icon: LifeBuoy },
-  { href: '#legal', label: 'Legal', icon: Scale },
+  { href: '#waitlist', label: 'Waitlist / Login', icon: LogIn },
 ];
 
 export default function Sidebar() {
@@ -33,16 +30,6 @@ export default function Sidebar() {
             );
           })}
         </nav>
-
-        <div className="mt-6 border-t border-white/10 pt-4">
-          <div className="text-xs uppercase tracking-wide text-white/60 mb-3">Follow</div>
-          <div className="flex items-center gap-3 text-white/70">
-            <a href="#" aria-label="Instagram" className="hover:text-white"><Instagram className="h-5 w-5" /></a>
-            <a href="mailto:hello@example.com" aria-label="Mail" className="hover:text-white"><Mail className="h-5 w-5" /></a>
-            <a href="#" aria-label="Twitter" className="hover:text-white"><Twitter className="h-5 w-5" /></a>
-            <a href="#" aria-label="LinkedIn" className="hover:text-white"><Linkedin className="h-5 w-5" /></a>
-          </div>
-        </div>
       </div>
     </aside>
   );

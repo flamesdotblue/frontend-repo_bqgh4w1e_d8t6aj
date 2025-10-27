@@ -1,6 +1,7 @@
 import Sidebar from './components/Sidebar';
 import Hero from './components/Hero';
 import HomeShowcases from './components/HomeShowcases';
+import Waitlist from './components/Waitlist';
 import Footer from './components/Footer';
 
 export default function App() {
@@ -13,6 +14,7 @@ export default function App() {
       <main className="pl-64">
         <Hero />
         <HomeShowcases />
+        <Waitlist />
         <Footer />
       </main>
     </div>

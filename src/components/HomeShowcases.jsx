@@ -54,7 +54,7 @@ function FAQItem({ q, a, icon: Icon }) {
 export default function HomeShowcases() {
   return (
     <section className="relative">
-      <div className="pointer-events-none absolute inset-x-0 top-0 -z-0 h-40 bg-gradient-to-b from-white/10 to-transparent blur-2xl" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-40 bg-gradient-to-b from-white/10 to-transparent blur-2xl" />
 
       <div className="mx-auto max-w-6xl px-6">
         {/* Professional Upskilling */}
