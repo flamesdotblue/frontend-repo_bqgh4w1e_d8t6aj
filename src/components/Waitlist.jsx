@@ -1,71 +1,60 @@
-import { Mail } from 'lucide-react';
-import { useCallback } from 'react';
+import React, { useState } from 'react';
 
 export default function Waitlist() {
-  const handleSubmit = useCallback((e) => {
+  const [status, setStatus] = useState('');
+
+  function onSubmit(e) {
     e.preventDefault();
-    const form = e.currentTarget;
-    const data = new FormData(form);
-
-    const name = (data.get('name') || '').toString();
-    const email = (data.get('email') || '').toString();
-    const age = (data.get('age') || '').toString();
-    const interestedFor = (data.get('interestedFor') || '').toString();
-    const occupation = (data.get('occupation') || '').toString();
-
-    const subject = encodeURIComponent('Aame Waitlist Signup');
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nAge: ${age}\nInterested For: ${interestedFor}\nOccupation: ${occupation}`
-    );
-
-    window.location.href = `mailto:hello@example.com?subject=${subject}&body=${body}`;
-  }, []);
+    setStatus('Thanks for joining!');
+  }
 
   return (
-    <section id="waitlist" className="relative py-20">
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-40 bg-gradient-to-b from-fuchsia-500/20 via-sky-400/20 to-transparent blur-2xl" />
-      <div className="relative z-10 mx-auto max-w-3xl px-6">
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70 backdrop-blur">
-          <Mail className="h-3.5 w-3.5" />
-          Join the waitlist
-        </div>
-        <h2 className="text-3xl font-semibold text-white md:text-4xl">Be first to try Aame</h2>
-        <p className="mt-2 text-white/70">Sign up and well reach out with early access and updates.</p>
+    <section id="waitlist" className="relative mx-auto max-w-6xl px-6 py-20">
+      <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-slate-900/60 p-[1px]">
+        <div className="relative rounded-[14px] bg-slate-950/80 p-6 ring-1 ring-white/10">
+          {/* Ambient gradient glow */}
+          <div className="pointer-events-none absolute -inset-20 -z-[1] blur-3xl opacity-60" style={{
+            background:
+              'radial-gradient(60% 80% at 20% 10%, rgba(217,70,239,0.25), transparent 60%), radial-gradient(70% 60% at 80% 30%, rgba(34,197,94,0.25), transparent 60%), radial-gradient(50% 70% at 50% 90%, rgba(34,211,238,0.25), transparent 60%)'
+          }} />
 
-        <form onSubmit={handleSubmit} className="mt-8 space-y-4">
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div>
-              <label className="mb-1 block text-xs text-white/60" htmlFor="name">Name</label>
-              <input id="name" name="name" required className="w-full rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder-white/40 outline-none focus:border-white/20" placeholder="Jane Doe" />
-            </div>
-            <div>
-              <label className="mb-1 block text-xs text-white/60" htmlFor="email">Email</label>
-              <input id="email" name="email" type="email" required className="w-full rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder-white/40 outline-none focus:border-white/20" placeholder="jane@company.com" />
-            </div>
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold text-white">Join the waitlist</h3>
+            <p className="mt-1 text-sm text-white/80">Get early access and updates.</p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-3">
-            <div>
-              <label className="mb-1 block text-xs text-white/60" htmlFor="age">Age</label>
-              <input id="age" name="age" type="number" min="10" max="120" className="w-full rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder-white/40 outline-none focus:border-white/20" placeholder="24" />
-            </div>
-            <div className="sm:col-span-2">
-              <label className="mb-1 block text-xs text-white/60" htmlFor="interestedFor">Interested For</label>
-              <input id="interestedFor" name="interestedFor" className="w-full rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder-white/40 outline-none focus:border-white/20" placeholder="GATE, Upskilling, Professor tools..." />
-            </div>
-          </div>
-
-          <div>
-            <label className="mb-1 block text-xs text-white/60" htmlFor="occupation">Occupation</label>
-            <input id="occupation" name="occupation" className="w-full rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder-white/40 outline-none focus:border-white/20" placeholder="Student, Working Professional, Professor..." />
-          </div>
-
-          <div className="pt-2">
-            <button type="submit" className="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2.5 text-sm font-semibold text-black shadow/30 shadow-white/10 transition hover:bg-white/90">
-              Join Waitlist
+          <form onSubmit={onSubmit} className="grid grid-cols-1 gap-3 md:grid-cols-2">
+            <input
+              type="text"
+              name="name"
+              placeholder="Your name"
+              className="w-full rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/50 focus:border-white/30 focus:outline-none"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email address"
+              className="w-full rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/50 focus:border-white/30 focus:outline-none"
+              required
+            />
+            <select
+              name="interestedFor"
+              className="w-full rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-white focus:border-white/30 focus:outline-none md:col-span-2"
+            >
+              <option value="chat">Conversational UI</option>
+              <option value="creative">Creative tools</option>
+              <option value="automation">Automation flows</option>
+            </select>
+            <button
+              type="submit"
+              className="md:col-span-2 mt-2 inline-flex w-full items-center justify-center rounded-md bg-gradient-to-r from-fuchsia-500 via-cyan-400 to-emerald-500 px-4 py-2 text-sm font-medium text-slate-900 shadow hover:shadow-lg transition"
+            >
+              Notify me
             </button>
-          </div>
-        </form>
+          </form>
+          {status && <p className="mt-3 text-sm text-emerald-300">{status}</p>}
+        </div>
       </div>
     </section>
   );

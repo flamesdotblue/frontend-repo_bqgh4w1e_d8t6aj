@@ -1,46 +1,38 @@
+import React from 'react';
 import Spline from '@splinetool/react-spline';
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-[90vh] w-full overflow-hidden">
+    <section id="home" className="relative h-screen w-full overflow-hidden bg-slate-950 text-white">
+      {/* Spline scene */}
       <div className="absolute inset-0">
         <Spline
           scene="https://prod.spline.design/ESO6PnMadasO0hU3/scene.splinecode"
           style={{ width: '100%', height: '100%' }}
         />
-        {/* soft vignette and gradient glow overlay */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black" />
       </div>
 
-      <div className="relative mx-auto flex max-w-5xl flex-col items-start px-6 pt-32 pb-20 md:pt-40">
-        <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70 backdrop-blur">
-          Inspired by modern, fluid curves
+      {/* Colorful gradient overlays to enhance contrast; don't block Spline interactions */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-fuchsia-500/20 via-cyan-400/10 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-emerald-500/20 via-cyan-400/10 to-transparent" />
+
+      <div className="relative z-10 mx-auto flex h-full max-w-6xl items-center px-6">
+        <div className="backdrop-blur-[1px]">
+          <h1 className="font-semibold tracking-tight text-4xl sm:text-5xl md:text-6xl">
+            Vivid, playful, and interactive
+          </h1>
+          <p className="mt-4 max-w-xl text-sm/6 md:text-base/7 text-white/80">
+            A bright hero with glassy gradients and smooth interactions. Explore vibrant use-cases below.
+          </p>
+          <div className="mt-8 flex gap-3">
+            <a href="#use-cases" className="rounded-full bg-white px-5 py-2 text-sm font-medium text-slate-900 shadow hover:shadow-lg transition">
+              Explore
+            </a>
+            <a href="#waitlist" className="rounded-full border border-white/30 bg-white/10 px-5 py-2 text-sm font-medium text-white backdrop-blur hover:bg-white/15 transition">
+              Join waitlist
+            </a>
+          </div>
         </div>
-        <h1 className="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
-          AI For Education
-        </h1>
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/80 md:text-lg">
-          Aame helps learners, professionals, and universities create high‑quality, personalized learning experiences powered by multi‑source AI research.
-        </p>
-        <div className="mt-8 flex items-center gap-4">
-          <a
-            href="#download"
-            className="group inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-black shadow/30 shadow-white/10 transition hover:bg-white/90"
-          >
-            Get Aame
-            <span className="transition-transform group-hover:translate-x-0.5">→</span>
-          </a>
-          <a
-            href="#use-cases"
-            className="text-sm text-white/70 hover:text-white"
-          >
-            Explore use cases
-          </a>
-        </div>
-      </div>
-      {/* flowing curve accent */}
-      <div className="relative">
-        <div className="pointer-events-none mx-auto h-24 max-w-6xl rounded-full bg-gradient-to-r from-fuchsia-500/20 via-sky-400/20 to-emerald-400/20 blur-2xl" />
       </div>
     </section>
   );

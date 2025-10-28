@@ -1,36 +1,21 @@
-import { Home, Layers, LogIn } from 'lucide-react';
-
-const navItems = [
-  { href: '#home', label: 'Home', icon: Home },
-  { href: '#use-cases', label: 'Use Cases', icon: Layers },
-  { href: '#waitlist', label: 'Waitlist / Login', icon: LogIn },
-];
+import React from 'react';
+import { Home, Star, Mail } from 'lucide-react';
 
 export default function Sidebar() {
   return (
-    <aside className="fixed left-0 top-0 z-40 h-full w-64 border-r border-white/10 bg-black/70 backdrop-blur-xl">
-      <div className="flex h-full flex-col px-4 py-6">
-        <div className="mb-8">
-          <div className="text-xl font-semibold tracking-tight text-white">Aame</div>
-          <div className="text-xs text-white/60">AI for Education</div>
-        </div>
-
-        <nav className="flex-1 space-y-1">
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            return (
-              <a
-                key={item.href}
-                href={item.href}
-                className="flex items-center gap-3 rounded-md px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-white transition"
-              >
-                <Icon className="h-4 w-4" />
-                <span>{item.label}</span>
-              </a>
-            );
-          })}
-        </nav>
+    <aside className="fixed left-0 top-0 z-20 hidden h-full w-20 flex-col items-center justify-between border-r border-white/10 bg-slate-950/60 px-2 py-6 backdrop-blur md:flex">
+      <div className="flex flex-col items-center gap-6">
+        <a href="#home" className="group rounded-full p-2 text-white/70 hover:text-white">
+          <Home size={20} />
+        </a>
+        <a href="#use-cases" className="group rounded-full p-2 text-white/70 hover:text-white">
+          <Star size={20} />
+        </a>
+        <a href="#waitlist" className="group rounded-full p-2 text-white/70 hover:text-white">
+          <Mail size={20} />
+        </a>
       </div>
+      <div className="text-[10px] tracking-wider text-white/40">FLAMES</div>
     </aside>
   );
 }
