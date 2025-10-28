@@ -5,7 +5,7 @@ export default function Hero() {
     <section id="home" className="relative min-h-[90vh] w-full overflow-hidden">
       <div className="absolute inset-0">
         <Spline
-          scene="https://prod.spline.design/WCoEDSwacOpKBjaC/scene.splinecode"
+          scene="https://prod.spline.design/ESO6PnMadasO0hU3/scene.splinecode"
           style={{ width: '100%', height: '100%' }}
         />
         {/* soft vignette and gradient glow overlay */}

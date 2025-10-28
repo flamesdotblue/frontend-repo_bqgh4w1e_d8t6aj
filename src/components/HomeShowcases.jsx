@@ -2,35 +2,39 @@ import { Brain, Youtube, FileText, Globe, Building2, Shield, Calculator, Users }
 
 function ChatCard({ title, points, sources }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
-      <div className="mb-3 flex items-center gap-2 text-white/90">
-        <Brain className="h-4 w-4" />
-        <span className="text-sm font-semibold">{title}</span>
-      </div>
-      <div className="space-y-3 text-sm text-white/80">
-        {points.map((p, idx) => (
-          <div key={idx} className="rounded-lg bg-black/30 p-3">
-            <div className="mb-1 text-xs text-white/60">Assistant</div>
-            <div>{p}</div>
-          </div>
-        ))}
-      </div>
-      <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-white/70">
-        {sources.includes('youtube') && (
-          <span className="inline-flex items-center gap-1 rounded-full bg-black/40 px-2 py-1"><Youtube className="h-3 w-3"/>YouTube</span>
-        )}
-        {sources.includes('papers') && (
-          <span className="inline-flex items-center gap-1 rounded-full bg-black/40 px-2 py-1"><FileText className="h-3 w-3"/>Research papers</span>
-        )}
-        {sources.includes('web') && (
-          <span className="inline-flex items-center gap-1 rounded-full bg-black/40 px-2 py-1"><Globe className="h-3 w-3"/>Web search</span>
-        )}
-        {sources.includes('company') && (
-          <span className="inline-flex items-center gap-1 rounded-full bg-black/40 px-2 py-1"><Building2 className="h-3 w-3"/>Target company</span>
-        )}
-        {sources.includes('exam') && (
-          <span className="inline-flex items-center gap-1 rounded-full bg-black/40 px-2 py-1"><Users className="h-3 w-3"/>Exam papers</span>
-        )}
+    <div className="group relative rounded-2xl bg-gradient-to-br from-fuchsia-500 via-cyan-400 to-emerald-400 p-0.5 transition-transform duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:shadow-2xl hover:shadow-fuchsia-500/20">
+      <div className="rounded-2xl border border-white/10 bg-black/60 p-5 backdrop-blur-md">
+        <div className="mb-3 flex items-center gap-2 text-white/90">
+          <span className="inline-flex h-6 w-6 items-center justify-center rounded-md bg-white/10 ring-1 ring-white/10">
+            <Brain className="h-3.5 w-3.5" />
+          </span>
+          <span className="text-sm font-semibold">{title}</span>
+        </div>
+        <div className="space-y-3 text-sm text-white/80">
+          {points.map((p, idx) => (
+            <div key={idx} className="rounded-lg bg-white/5 p-3 ring-1 ring-white/10 transition-colors group-hover:bg-white/10">
+              <div className="mb-1 text-xs text-white/60">Assistant</div>
+              <div>{p}</div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-white/70">
+          {sources.includes('youtube') && (
+            <span className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-pink-500/30 to-yellow-400/30 px-2 py-1 ring-1 ring-white/10"><Youtube className="h-3 w-3"/>YouTube</span>
+          )}
+          {sources.includes('papers') && (
+            <span className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-indigo-500/30 to-cyan-400/30 px-2 py-1 ring-1 ring-white/10"><FileText className="h-3 w-3"/>Research papers</span>
+          )}
+          {sources.includes('web') && (
+            <span className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-emerald-500/30 to-teal-400/30 px-2 py-1 ring-1 ring-white/10"><Globe className="h-3 w-3"/>Web search</span>
+          )}
+          {sources.includes('company') && (
+            <span className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-violet-500/30 to-fuchsia-400/30 px-2 py-1 ring-1 ring-white/10"><Building2 className="h-3 w-3"/>Target company</span>
+          )}
+          {sources.includes('exam') && (
+            <span className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-amber-500/30 to-orange-400/30 px-2 py-1 ring-1 ring-white/10"><Users className="h-3 w-3"/>Exam papers</span>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -38,13 +42,13 @@ function ChatCard({ title, points, sources }) {
 
 function FAQItem({ q, a, icon: Icon }) {
   return (
-    <details className="group rounded-xl border border-white/10 bg-white/5 p-4 open:bg-white/10">
+    <details className="group rounded-xl border border-white/10 bg-white/5 p-4 transition-all duration-200 open:bg-white/10 hover:border-white/20 hover:bg-white/10">
       <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-white">
         <div className="flex items-center gap-2">
           {Icon && <Icon className="h-4 w-4 text-white/80" />}
           <span className="text-sm font-medium text-white/90">{q}</span>
         </div>
-        <span className="text-white/50 transition group-open:rotate-180">▾</span>
+        <span className="text-white/50 transition-transform duration-200 group-open:rotate-180">▾</span>
       </summary>
       <p className="mt-2 text-sm leading-relaxed text-white/80">{a}</p>
     </details>
